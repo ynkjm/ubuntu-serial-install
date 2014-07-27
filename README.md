@@ -8,8 +8,9 @@ USB boot-disk setup
 2. Create USB boot disk using unetbootin
 3. Modify the following files
 
-- isolinux/isolinux.cfg
+	- isolinux/isolinux.cfg
 
+	```
 	# D-I config version 2.0
 	CONSOLE 0
 	SERIAL 0 115200 0
@@ -17,17 +18,20 @@ USB boot-disk setup
 	default vesamenu.c32
 	prompt 0
 	timeout 0
+	```
+	- isolinux/txt.cfg
 
-- isolinux/txt.cfg
-
+	```
 	default install
 	label install
 	  menu label ^Install Ubuntu Server
 	  kernel /install/vmlinuz
 	  append  file=/cdrom/preseed/ubuntu-server.seed vga=788 initrd=/install/initrd.gz -- console=ttyS0,115200n8 quiet –
-
-- syslinux.cfg
-
+	```
+	
+	- syslinux.cfg
+	
+	```
 	CONSOLE 0
 	SERIAL 0 115200 0
 	
@@ -39,7 +43,7 @@ USB boot-disk setup
 	label unetbootindefault
 	kernel /install/netboot/ubuntu-installer/amd64/linux
 	append initrd=/install/netboot/ubuntu-installer/amd64/initrd.gz tasks=standard pkgsel/language-pack-patterns= pkgsel/install-language-support=false vga=788 -- console=ttyS0,115200n8 -- quiet
-
+	```
 
 Reference
 ------------------------------------------

@@ -4,8 +4,8 @@ How to install Ubuntu using serial console
 USB boot-disk setup
 ------------------------------------------
 
-1. Download ubuntu 14.04 server amd64 iso file
-2. Create USB boot disk using unetbootin
+1. Download an ubuntu server amd64 iso file
+2. Create a USB boot disk using unetbootin
 3. Modify the following files
 
 	- isolinux/isolinux.cfg
@@ -112,7 +112,7 @@ Post setup
 		# updaet-grub
 	```
 
-Tested Ubuntu version and Hardware
+Tested Ubuntu and Hardware
 ------------------------------------------
 ## Ubuntu version
 - Ubuntu 14.04 LTS
@@ -120,8 +120,9 @@ Tested Ubuntu version and Hardware
 - Ubuntu 16.04 LTS
 
 ## Tested hardware
-- Riava Rangeley server
 - Lanner FW-7551
+- Riava Rangeley server
+
 
 Reference
 ------------------------------------------

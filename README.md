@@ -12,10 +12,8 @@ USB boot-disk setup
 
 	```
 	# D-I config version 2.0
-	CONSOLE 0
-	SERIAL 0 115200 0
 	include menu.cfg
-	default vesamenu.c32
+	default menu.c32
 	prompt 0
 	timeout 0
 	```
@@ -26,23 +24,23 @@ USB boot-disk setup
 	label install
 	  menu label ^Install Ubuntu Server
 	  kernel /install/vmlinuz
-	  append  file=/cdrom/preseed/ubuntu-server.seed vga=788 initrd=/install/initrd.gz -- console=ttyS0,115200n8 quiet –
+      append vga=normal initrd=/install/initrd.gz -- console=tty0 console=ttyS0,115200n8 nosplash debug -
 	```
-	
+
 	- syslinux.cfg
-	
+
 	```
 	CONSOLE 0
 	SERIAL 0 115200 0
-	
+
 	default menu.c32
 	prompt 0
 	menu title UNetbootin
 	timeout 100
-	
+
 	label unetbootindefault
-	kernel /install/netboot/ubuntu-installer/amd64/linux
-	append initrd=/install/netboot/ubuntu-installer/amd64/initrd.gz tasks=standard pkgsel/language-pack-patterns= pkgsel/install-language-support=false vga=788 -- console=ttyS0,115200n8 -- quiet
+	kernel /ubnkern
+    append vga=normal initrd=/ubninit nomodeset askmethod console=tty0 console=ttyS0,115200n8
 	```
 
 Hardware configuration
@@ -58,7 +56,7 @@ Hardware configuration
 			Serial Port 0 Configuration /Serial Port 1 Configuration
 			Serial Port: Enabled
 			```
-			
+
 		- Enter "Serial Port Console Redirection" option
 
 			```
@@ -75,7 +73,7 @@ Hardware configuration
 			Putty KeyPad: VT100
 			Redirection After BIOS Post: Always Enable
 			```
-			
+
 3. Save current BIOS configuration and reboot
 
 Client setup
@@ -90,13 +88,13 @@ Ubuntu Installation
 ------------------------------------------
 1. Proceed normal Ubuntu installation.
 2. At the phase of GRUB installation, select your correct boot disk for boot loader.
-An Ubuntu installation boot disk may be "/dev/sda" in case that you use USB boot.
+An Ubuntu 14.04 installation boot disk may be "/dev/sda" in case that you use USB boot.
 
 ```
-	/dev/sdb
+    /dev/sdb
 ```
 
-Post setup 
+Post setup
 ------------------------------------------
 1. Grub configuration
 
@@ -107,12 +105,23 @@ Post setup
 		GRUB_TERMINAL=serial
 		GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
 	```
-	
+
 	- Update grub configuration
 
 	```
 		# updaet-grub
 	```
+
+Tested Ubuntu version and Hardware
+------------------------------------------
+## Ubuntu version
+- Ubuntu 14.04 LTS
+- Ubuntu 15.10
+- Ubuntu 16.04 LTS
+
+## Tested hardware
+- Riava Rangeley server
+- Lanner FW-7551
 
 Reference
 ------------------------------------------

@@ -110,7 +110,7 @@ Post setup
 	- Update grub configuration
 
 	```
-		# updaet-grub
+		# update-grub
 	```
 
 Tested Ubuntu and Hardware

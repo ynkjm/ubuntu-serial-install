@@ -94,16 +94,21 @@ An Ubuntu 14.04 installation boot disk may be "/dev/sda" in case that you use US
     /dev/sdb
 ```
 
+3. Install SSH daemon and avahi-daemon to configure the system after this installation.
+
 Post setup
 ------------------------------------------
+First boot after the Ubuntu installation, you can not see any output in seirial termainal.
+You have to check IP address before the reboot.
+
 1. Grub configuration
 
 	- Edit /etc/default/grub as follows:
 
 	```
 		GRUB_CMDLINE_LINUX_DEFULT=""
-		GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
 		GRUB_TERMINAL='serial console'
+		GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
 		GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
 	```
 
@@ -122,6 +127,7 @@ Tested Ubuntu and Hardware
 
 ## Tested hardware
 - Lanner FW-7551
+- Lanner NCA-4010
 - Riava Rangeley server
 
 

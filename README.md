@@ -115,7 +115,7 @@ You have to check IP address before the reboot.
 	- Update grub configuration
 
 	```
-		# updaet-grub
+		# update-grub
 	```
 
 Tested Ubuntu and Hardware

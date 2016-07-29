@@ -124,9 +124,11 @@ Tested Ubuntu and Hardware
 - Ubuntu 14.04 LTS
 - Ubuntu 15.10
 - Ubuntu 16.04 LTS
+- Ubuntu 16.04.1 LTS
 
 ## Tested hardware
 - Lanner FW-7551
+- Lanner FW-8896
 - Lanner NCA-4010
 - Riava Rangeley server
 

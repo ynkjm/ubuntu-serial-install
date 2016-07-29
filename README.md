@@ -81,7 +81,7 @@ Client setup
 1. Attach serial console from client
 
 ```
-	% screen /dev/ttyS0 115200
+% screen /dev/ttyS0 115200
 ```
 
 Ubuntu Installation
@@ -91,7 +91,7 @@ Ubuntu Installation
 An Ubuntu 14.04 installation boot disk may be "/dev/sda" in case that you use USB boot.
 
 ```
-    /dev/sdb
+/dev/sdb
 ```
 
 3. Install SSH daemon and avahi-daemon to configure the system after this installation.
@@ -106,16 +106,16 @@ You have to check IP address before the reboot.
 	- Edit /etc/default/grub as follows:
 
 	```
-		GRUB_CMDLINE_LINUX_DEFULT=""
-		GRUB_TERMINAL='serial console'
-		GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
-		GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
+	GRUB_CMDLINE_LINUX_DEFULT=""
+	GRUB_TERMINAL='serial console'
+	GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
+	GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"
 	```
 
 	- Update grub configuration
 
 	```
-		# update-grub
+	# update-grub
 	```
 
 Tested Ubuntu and Hardware

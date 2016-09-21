@@ -90,11 +90,16 @@ Ubuntu Installation
 2. At the phase of GRUB installation, select your correct boot disk for boot loader.
 An Ubuntu 14.04 installation boot disk may be "/dev/sda" in case that you use USB boot.
 
-```
-/dev/sdb
-```
+    ```
+    /dev/sdb
+    ```
 
 3. Install SSH daemon and avahi-daemon to configure the system after this installation.
+4. (Optional) When you see the dialog at "Finish the installation", check "<Go Back>" and select "start shell" to check host IP address in a DHCP environment with the following command.
+
+    ```
+    $ ip addr show
+    ```
 
 Post setup
 ------------------------------------------

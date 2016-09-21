@@ -106,7 +106,7 @@ You have to check IP address before the reboot.
 	- Edit /etc/default/grub as follows:
 
 	```
-	GRUB_CMDLINE_LINUX_DEFULT=""
+	GRUB_CMDLINE_LINUX_DEFAULT=""
 	GRUB_TERMINAL='serial console'
 	GRUB_CMDLINE_LINUX="console=tty0 console=ttyS0,115200n8"
 	GRUB_SERIAL_COMMAND="serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1"

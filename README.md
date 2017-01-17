@@ -1,14 +1,17 @@
 How to install Ubuntu using serial console
 ==========================================
 
+This instruction show you how to install Ubuntu with serial console without VGA.
+We have tested the following instructions under UEFI boot and legacy boot mode.
+
 USB boot-disk setup
 ------------------------------------------
 
 1. Download an ubuntu server amd64 iso file
 2. Create a USB boot disk using unetbootin
-3. Modify the following files
+3. Modify the following files. If you still use legacy bios boot mode, modify `isolinux/isolinux.cfg`, `isolinux/txt.cfg`, `syslinux.cfg`. If you use UEFI boot mode, modify `boot/grub/grub.cfg` only.
 
-	- isolinux/isolinux.cfg
+	- `isolinux/isolinux.cfg`
 
 	```
 	# D-I config version 2.0
@@ -17,7 +20,7 @@ USB boot-disk setup
 	prompt 0
 	timeout 0
 	```
-	- isolinux/txt.cfg
+	- `isolinux/txt.cfg`
 
 	```
 	default install
@@ -27,7 +30,7 @@ USB boot-disk setup
       append vga=normal initrd=/install/initrd.gz -- console=tty0 console=ttyS0,115200n8 nosplash debug -
 	```
 
-	- syslinux.cfg
+	- `syslinux.cfg`
 
 	```
 	CONSOLE 0
@@ -41,6 +44,18 @@ USB boot-disk setup
 	label unetbootindefault
 	kernel /ubnkern
     append vga=normal initrd=/ubninit nomodeset askmethod console=tty0 console=ttyS0,115200n8
+	```
+    
+    - `boot/grub/grub.cfg`
+    
+    Add serial console options and remove quiet option in the menuentry of "Insatall Ubuntu Server"
+    
+	```    
+    menuentry "Install Ubuntu Server" {
+        set gfxpayload=keep
+        linux   /install/vmlinuz  file=/cdrom/preseed/ubuntu-server.seed vga=normal console=tty0 console=ttyS0,115200n8 ---
+        initrd  /install/initrd.gz
+        }
 	```
 
 Hardware configuration
@@ -74,7 +89,13 @@ Hardware configuration
 			Redirection After BIOS Post: Always Enable
 			```
 
-3. Save current BIOS configuration and reboot
+3. Select boot partition
+
+	- Enter "Boot" Tab
+    
+    Set `UEFI USB disk boot` or `USB disk` as first boot priority at Boot Option
+
+4. Save current BIOS configuration and reboot
 
 Client setup
 ------------------------------------------
@@ -101,11 +122,18 @@ An Ubuntu 14.04 installation boot disk may be "/dev/sda" in case that you use US
     $ ip addr show
     ```
 
+First boot after the installation
+-----------------------------------------
+1. Enter `editing mode` of grub boot option with key `e`, when you see grub boot menu on serial console.
+2. Add console options after `ro` in linux boot options
+
+	```
+    linux ..... ro console=tty0 console=ttyS0,115200n8q
+	```
+3. Boot linux with current grub configuration by `Ctrl-x`
+
 Post setup
 ------------------------------------------
-First boot after the Ubuntu installation, you can not see any output in seirial termainal.
-You have to check IP address before the reboot.
-
 1. Grub configuration
 
 	- Edit /etc/default/grub as follows:

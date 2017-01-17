@@ -128,7 +128,7 @@ First boot after the installation
 2. Add console options after `ro` in linux boot options
 
 	```
-    linux ..... ro console=tty0 console=ttyS0,115200n8q
+    linux ..... ro console=tty0 console=ttyS0,115200n8
 	```
 3. Boot linux with current grub configuration by `Ctrl-x`
 

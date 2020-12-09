@@ -48,7 +48,7 @@ USB boot-disk setup
     
     - `boot/grub/grub.cfg`
     
-    Add serial console options and remove quiet option in the menuentry of "Insatall Ubuntu Server"
+    Add serial console options and remove quiet option in the menuentry of "Install Ubuntu Server"
     
 	```    
     menuentry "Install Ubuntu Server" {
